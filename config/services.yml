@@ -1,0 +1,15 @@
+parameters:
+    sepa_qr.hooks: [displayOrderConfirmation]
+    sepa_qr.modules: [ps_wirepayment]
+
+services:
+    _defaults:
+        public: true
+
+    BelVG\SepaQr\Hook\HookManager:
+        class: BelVG\SepaQr\Hook\HookManager
+
+    BelVG\SepaQr\Setup\Install:
+        class: BelVG\SepaQr\Setup\Install
+        arguments:
+            - '@BelVG\SepaQr\Hook\HookManager'
